@@ -1,8 +1,8 @@
 package io.pivotal.pal.tracker;
 
-import com.mysql.cj.jdbc.MysqlDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
@@ -11,25 +11,19 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
-import java.sql.*;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.ArrayList;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.util.List;
 
 @Component
+@ConditionalOnBean(DataSource.class)
 public class JdbcTimeEntryRepository implements TimeEntryRepository {
-
-
-
 
     private JdbcTemplate jdbcTemplate;
 
     @Autowired
     public JdbcTimeEntryRepository(DataSource dataSource) {
-
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 

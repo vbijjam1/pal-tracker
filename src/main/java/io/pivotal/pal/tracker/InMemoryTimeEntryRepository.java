@@ -1,11 +1,14 @@
 package io.pivotal.pal.tracker;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.stereotype.Component;
 
+import javax.sql.DataSource;
 import java.util.*;
 import java.util.stream.Collectors;
 
 @Component
+@ConditionalOnMissingBean(DataSource.class)
 public class InMemoryTimeEntryRepository implements TimeEntryRepository{
 
     private Map<Long,TimeEntry> timeEntries = new HashMap<Long,TimeEntry>();

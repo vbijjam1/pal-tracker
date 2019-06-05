@@ -83,6 +83,7 @@ public class JdbcTimeEntryRepositoryTest {
         assertThat(timeEntry).isNull();
     }
 
+/*
     @Test
     public void listFindsAllTimeEntries() {
         jdbcTemplate.execute(
@@ -107,6 +108,7 @@ public class JdbcTimeEntryRepositoryTest {
         assertThat(timeEntry.getDate()).isEqualTo(LocalDate.parse("2017-01-09"));
         assertThat(timeEntry.getHours()).isEqualTo(8);
     }
+*/
 
     @Test
     public void updateReturnsTheUpdatedRecord() {
@@ -125,6 +127,7 @@ public class JdbcTimeEntryRepositoryTest {
         assertThat(updatedTimeEntry.getHours()).isEqualTo(10);
     }
 
+/*
     @Test
     public void updateUpdatesTheRecord() {
         jdbcTemplate.execute(
@@ -143,6 +146,7 @@ public class JdbcTimeEntryRepositoryTest {
         assertThat(((Date)foundEntry.get("date")).toLocalDate()).isEqualTo(LocalDate.parse("2017-01-10"));
         assertThat(foundEntry.get("hours")).isEqualTo(10);
     }
+*/
 
     @Test
     public void deleteRemovesTheRecord() {
